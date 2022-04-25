@@ -1,1 +1,1 @@
-worker: python with-tutor-bot bot.py
+worker: python bot.py
