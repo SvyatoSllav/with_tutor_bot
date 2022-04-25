@@ -2,6 +2,8 @@
 from telegram import ReplyKeyboardMarkup
 from telegram.ext import Filters, MessageHandler, Updater, CommandHandler
 
+from telegram.error import BadRequest
+
 
 TOKEN = '5361232542:AAHPXl8NMHL2hwl2pShFcGa-am59i-u7yCg'
 ALL_CHAT_ID = '@with_tutor_rep'
@@ -75,15 +77,17 @@ def send_client_to_chat(update, context):
             f'{space}'
             f'------------{message}------------')
     try:
-        context.bot.send_message(
-            chat_id=ALL_CHAT_ID,
-            text=text)
-        context.bot.send_message(
-            chat_id=chat_id,
-            text=TEXT
-        )
-        save_person(chat_id, message)
-    except Exception:
+        if chat.title != 'Репетиторы with tutor':
+            context.bot.send_message(
+                chat_id=ALL_CHAT_ID,
+                text=text)
+            context.bot.send_message(
+                chat_id=chat_id,
+                text=TEXT
+            )
+            save_person(chat_id, message)
+        return
+    except BadRequest:
         context.bot.send_message(
             chat_id=chat_id,
             text=('Неккоректно составлено сообщение'
