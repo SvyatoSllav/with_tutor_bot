@@ -39,7 +39,6 @@ def get_current_questions(update, context):
     for key, value in ID_AND_QUESTION.items():
         text += str(key) +': '
         text += '  ||||||||||||||  '.join(ID_AND_QUESTION[key])
-    print(text, 'TEXT')
     context.bot.send_message(
         chat_id=ALL_CHAT_ID,
         text=text
