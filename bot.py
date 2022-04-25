@@ -1,3 +1,4 @@
+# coding: utf-8
 from telegram import ReplyKeyboardMarkup
 from telegram.ext import Filters, MessageHandler, Updater, CommandHandler
 
@@ -32,9 +33,14 @@ def save_person(chat_id, message):
 
 
 def get_current_questions(update, context):
+    text = ''
+    for key, value in ID_AND_QUESTION.items():
+        text += str(key) +': '
+        text += '  ||||||||||||||  '.join(ID_AND_QUESTION[key])
+    print(text, 'TEXT')
     context.bot.send_message(
         chat_id=ALL_CHAT_ID,
-        text=ID_AND_QUESTION
+        text=text
     )
 
 
