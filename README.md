@@ -3,5 +3,5 @@
 
 # Установка и запуск
 Выполните команды:
-pip install -r requirements.txt
-python3 bot.py
+`pip install -r requirements.txt`
+`python3 bot.py`
